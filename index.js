@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express =  require('express')
 const mongoose = require('mongoose');
 const Product =  require('./models/product.model.js')
@@ -17,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 
-mongoose.connect("mongodb+srv://abelb200:Password@nodecrudapi.86khovx.mongodb.net/Node-Crud-API?retryWrites=true&w=majority&appName=NodeCrudAPI")
+mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{
     console.log("connected to the database!");
     app.listen(3000, ()=> {
